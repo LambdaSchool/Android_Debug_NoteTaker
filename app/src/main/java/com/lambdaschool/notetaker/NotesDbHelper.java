@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class NotesDbHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 0;
+    private static final int DATABASE_VERSION = 1;//TODO Change database version from 0 to 1.
     private static final String DATABASE_NAME = "NotesDatabase.db";
 
     public NotesDbHelper(Context context) {

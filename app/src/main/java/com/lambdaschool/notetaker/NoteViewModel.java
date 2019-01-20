@@ -29,4 +29,10 @@ public class NoteViewModel extends ViewModel {
 //            noteList = repo.getNotes(context);
         }
     }
+
+    public void deleteNote(Note note) {  //TODO Bonus: add code for deleting note.
+        if(noteList != null) {
+            repo.deleteNote(note);
+        }
+    }
 }

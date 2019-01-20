@@ -29,6 +29,7 @@ public class NetworkAdapter {
             connection = (HttpURLConnection) url.openConnection();
             connection.setReadTimeout(TIMEOUT);
             connection.setConnectTimeout(TIMEOUT);
+            connection.setRequestMethod(requestType);//TODO add this line
 
             if(requestType.equals(GET) || requestType.equals(DELETE)) {
                 connection.connect();
