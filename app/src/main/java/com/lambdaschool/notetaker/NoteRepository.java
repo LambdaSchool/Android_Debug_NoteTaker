@@ -39,7 +39,7 @@ public class NoteRepository {
         return NotesDbDao.readAllNotes();
     }
 
-/*    public void addNote(final Note note) {
+/*    public void addNote(final Note note) {//TODO change this method to method below to accommodate an already existing note.
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -52,7 +52,7 @@ public class NoteRepository {
 //        return SharedPrefsDao.getAllNotes();
     }*/
 
-    //TODO change commented out method above to method below to accommodate an already existing note.
+
     public void addNote(final Note note) {
         new Thread(new Runnable() {
             @Override

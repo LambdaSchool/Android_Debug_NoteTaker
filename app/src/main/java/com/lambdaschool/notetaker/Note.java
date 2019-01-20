@@ -106,7 +106,7 @@ public class Note implements Serializable {
     public String toJsonString() {
         JSONObject json = new JSONObject();
         try {
-            json.put("title", this.title); //TODO add missing ; to the end of this line.
+            json.put("title", this.title); //TODO Add missing ; to the end of this line.
         } catch (JSONException e) {
             e.printStackTrace();
         }
