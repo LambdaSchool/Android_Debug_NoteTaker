@@ -39,7 +39,7 @@ public class NoteRepository {
         return NotesDbDao.readAllNotes();
     }
 
-    public void addNote(final Note note) {
+/*    public void addNote(final Note note) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,5 +50,23 @@ public class NoteRepository {
             }
         }).start();
 //        return SharedPrefsDao.getAllNotes();
+    }*/
+
+    //TODO change commented out method above to method below to accommodate an already existing note.
+    public void addNote(final Note note) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (note.getId().equals(Note.NO_ID)) {
+                    String newId = NotesFirebaseDao.createNote(note);
+                    note.setId(newId);
+                    NotesDbDao.createNote(note);
+                } else {
+                    NotesFirebaseDao.updateNote(note.getId(), note);
+                    NotesDbDao.updateNote(note);
+                }
+                liveDataList.postValue(getNotesFromCache());
+            }
+        }).start();
     }
 }

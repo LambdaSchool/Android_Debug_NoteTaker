@@ -24,7 +24,7 @@ public class EditActivity extends AppCompatActivity {
         editTitle = findViewById(R.id.edit_title);
         editContent = findViewById(R.id.edit_content);
 
-        note = (Note) getIntent().getSerializableExtra("editNote");
+        note = (Note) getIntent().getSerializableExtra(EDIT_NOTE_KEY); //TODO Change hardcoded string to be the EDIT_NOTE_KEY constant to match the value put into the intent.
         if(note == null) {
             note = new Note(Note.NO_ID);
         }
