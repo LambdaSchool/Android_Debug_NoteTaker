@@ -22,18 +22,18 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int               LAYOUT_SPAN_COUNT = 2;
-    public static       SharedPreferences preferences;
+    public static final int LAYOUT_SPAN_COUNT = 2;
+    public static SharedPreferences preferences;
 
-    private Context       context;
-    private Activity      activity;
+    private Context context;
+    private Activity activity;
     private NoteViewModel viewModel;
 
     private int currentTheme;
 
     private StaggeredGridLayoutManager layoutManager;
-    private RecyclerView               listView;
-    private NoteListAdapter            listAdapter;
+    private RecyclerView listView;
+    private NoteListAdapter listAdapter;
 
     public static final int EDIT_REQUEST_CODE = 1;
 
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(context, EditActivity.class);
-                Note   newNote = new Note(Note.NO_ID);
+                Intent intent = new Intent(context, EditActivity.class);
+                Note newNote = new Note(Note.NO_ID);
                 startActivityForResult(intent, EDIT_REQUEST_CODE);
 
             }
@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
         notes.add(new Note(Note.NO_ID, "Decipherment", "Decipherment rich in mystery realm of the galaxies circumnavigated bits of moving fluff a still more glorious dawn awaits. Billions upon billions two ghostly white figures in coveralls and helmets are soflty dancing the carbon in our apple pies brain is the seed of intelligence Sea of Tranquility not a sunrise but a galaxyrise. Another world as a patch of light something incredible is waiting to be known not a sunrise but a galaxyrise hearts of the stars permanence of the stars and billions upon billions upon billions upon billions upon billions upon billions upon billions."));
         for (Note note : notes)
             viewModel.addNote(note, context);
-        }
     }
+//    } //TODO remove this extra closing bracket.
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
