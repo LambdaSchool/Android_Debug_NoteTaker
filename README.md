@@ -14,3 +14,4 @@ I noted and fixed 8 bugs total.  I denoted them in code using a TODO tag for eac
 6. On line 42	of NoteRepository.java:     Comment out existing addNote method and rewrite accommodate an already existing note.
 7. On line 8 	of NotesDbHelper.java:      Change database version from 0 to 1.
 8. On line 15	of NotesFirebaseDao.java:   Add entire line to define USER_ID constant value.
+9. Bonus: add code for deleting note.       Denoted by //TODO Bonus: add code for deleting note.

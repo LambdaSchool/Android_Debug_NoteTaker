@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context;
     private Activity activity;
-    private NoteViewModel viewModel;
+    protected static NoteViewModel viewModel;
 
     private int currentTheme;
 

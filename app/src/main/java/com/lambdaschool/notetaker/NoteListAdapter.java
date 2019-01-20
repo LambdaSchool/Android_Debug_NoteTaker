@@ -54,7 +54,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         final Note data = dataList.get(i);
 
         viewHolder.noteTitle.setText(data.getTitle());
@@ -78,6 +78,14 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
                 Intent intent = new Intent(context, EditActivity.class);
                 intent.putExtra(EditActivity.EDIT_NOTE_KEY, data);
                 activity.startActivityForResult(intent, MainActivity.EDIT_REQUEST_CODE);
+            }
+        });
+        viewHolder.parentView.setOnLongClickListener(new View.OnLongClickListener() {//TODO Bonus: add code for deleting note.
+            @Override
+            public boolean onLongClick(View v) {
+                MainActivity.viewModel.deleteNote(dataList.get(viewHolder.getAdapterPosition()));
+
+                return false;
             }
         });
     }

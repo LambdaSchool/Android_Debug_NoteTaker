@@ -69,4 +69,16 @@ public class NoteRepository {
             }
         }).start();
     }
+
+    public void deleteNote(final Note note) { //TODO Bonus: add code for deleting note.
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NotesFirebaseDao.deleteNote(note.getId());
+                NotesDbDao.deleteNote(note);
+                liveDataList.postValue(getNotesFromCache());
+            }
+        }).start();
+    }
+
 }
