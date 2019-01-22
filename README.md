@@ -12,3 +12,12 @@ As a recap, the project when working properly should:
 
 - Allow the user to create notes that are saved to a Firebase Database and an on-device persistent store using an SQL database
 - The device's persistent store is synchronized with the Firebase Database. (When a journal entry is saved to the device's persistent store it gets sent to Firebase, and vice-versa.
+
+
+Remove extra closing bracket in MainActivity. 
+Set request type in NetworkAdapter.
+Missing semicoclon in Note.java
+Notetitle should pull from here note_element_title in notelistadapter. 
+update dabata version in notesdbhelper 
+Wrong key to get the data from the intent. - EditActivity.
+UserID constant in FbDao. 
