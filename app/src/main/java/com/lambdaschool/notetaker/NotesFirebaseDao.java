@@ -13,6 +13,7 @@ public class NotesFirebaseDao {
     private static final String NOTES = "notes/";
     private static final String URL_ENDING = ".json";
 
+    public static final String  USER_ID = "-LSUsv1F5PZTtUX4k7uF/";
     private static final String USER_INFO = BASE_URL + USER_ID + URL_ENDING;
     private static final String USER_NOTES = BASE_URL + USER_ID + NOTES + URL_ENDING;
     private static final String USER_SPECIFIC_NOTE = BASE_URL + USER_ID + NOTES + "%s/" + URL_ENDING; //use string.format to add id
