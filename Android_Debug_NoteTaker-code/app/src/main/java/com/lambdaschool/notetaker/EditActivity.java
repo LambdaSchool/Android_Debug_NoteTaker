@@ -24,7 +24,7 @@ public class EditActivity extends AppCompatActivity {
         editTitle = findViewById(R.id.edit_title);
         editContent = findViewById(R.id.edit_content);
 
-        note = (Note) getIntent().getSerializableExtra("editNote");
+        note = (Note) getIntent().getSerializableExtra("edit_note");
         if(note == null) {
             note = new Note(Note.NO_ID);
         }

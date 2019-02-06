@@ -12,7 +12,7 @@ public class NotesFirebaseDao {
     private static final String BASE_URL = "https://notesdemoproject.firebaseio.com/";
     private static final String NOTES = "notes/";
     private static final String URL_ENDING = ".json";
-    private static final String USER_ID = ".ID";
+    private static final String USER_ID = "ID/";
 
     private static final String USER_INFO = BASE_URL + USER_ID + URL_ENDING;
     private static final String USER_NOTES = BASE_URL + USER_ID + NOTES + URL_ENDING;
