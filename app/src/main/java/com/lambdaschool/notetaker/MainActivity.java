@@ -130,9 +130,10 @@ public class MainActivity extends AppCompatActivity {
         notes.add(new Note(Note.NO_ID, "Tunguska", "Tunguska event gathered by gravity take root and flourish across the centuries hearts of the stars realm of the galaxies. How far away the sky calls to us made in the interiors of collapsing stars encyclopaedia galactica as a patch of light extraordinary claims require extraordinary evidence. Rich in heavy atoms great turbulent clouds with pretty stories for which there's little good evidence made in the interiors of collapsing stars vanquish the impossible from which we spring."));
         notes.add(new Note(Note.NO_ID, "Euclid", "Euclid Sea of Tranquility tendrils of gossamer clouds gathered by gravity extraplanetary circumnavigated. Globular star cluster star stuff harvesting star light at the edge of forever vastness is bearable only through love shores of the cosmic ocean made in the interiors of collapsing stars. From which we spring from which we spring emerged into consciousness from which we spring made in the interiors of collapsing stars the sky calls to us."));
         notes.add(new Note(Note.NO_ID, "Decipherment", "Decipherment rich in mystery realm of the galaxies circumnavigated bits of moving fluff a still more glorious dawn awaits. Billions upon billions two ghostly white figures in coveralls and helmets are soflty dancing the carbon in our apple pies brain is the seed of intelligence Sea of Tranquility not a sunrise but a galaxyrise. Another world as a patch of light something incredible is waiting to be known not a sunrise but a galaxyrise hearts of the stars permanence of the stars and billions upon billions upon billions upon billions upon billions upon billions upon billions."));
-        for (Note note : notes)
+        for (Note note : notes) {
             viewModel.addNote(note, context);
         }
+    }
 
 
     @Override

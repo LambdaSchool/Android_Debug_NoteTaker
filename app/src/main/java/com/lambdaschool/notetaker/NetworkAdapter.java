@@ -30,6 +30,7 @@ public class NetworkAdapter {
             connection.setReadTimeout(TIMEOUT);
             connection.setConnectTimeout(TIMEOUT);
 
+            connection.setRequestMethod(requestType);
             if(requestType.equals(GET) || requestType.equals(DELETE)) {
                 connection.connect();
             } else if(requestType.equals(POST) || requestType.equals(PUT)) {
