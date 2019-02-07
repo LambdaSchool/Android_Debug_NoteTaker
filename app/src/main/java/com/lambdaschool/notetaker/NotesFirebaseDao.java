@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class NotesFirebaseDao {
+    private static final String USER_ID = "-LSQUJFMojD6YDHavz9Y/";
+
     private static final String BASE_URL = "https://notesdemoproject.firebaseio.com/";
     private static final String NOTES = "notes/";
     private static final String URL_ENDING = ".json";
