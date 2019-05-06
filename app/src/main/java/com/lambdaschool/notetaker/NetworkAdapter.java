@@ -20,6 +20,7 @@ public class NetworkAdapter {
         return httpRequest(stringUrl, requestType, "");
     }
 
+
     public static String httpRequest(String stringUrl, String requestType, String body) {
         String result = "";
         InputStream stream = null;
