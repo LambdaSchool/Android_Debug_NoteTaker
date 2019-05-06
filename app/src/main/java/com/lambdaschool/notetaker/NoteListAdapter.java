@@ -20,7 +20,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            noteTitle = itemView.findViewById(R.id.edit_title);
+            noteTitle = itemView.findViewById(R.id.note_element_title);
             noteContent = itemView.findViewById(R.id.note_element_content);
             parentView = itemView.findViewById(R.id.note_element_parent_layout);
         }
