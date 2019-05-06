@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         for (Note note : notes)
             viewModel.addNote(note, context);
         }
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
