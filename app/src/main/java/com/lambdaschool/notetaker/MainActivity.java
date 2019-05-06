@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     public static final int               LAYOUT_SPAN_COUNT = 2;
     public static       SharedPreferences preferences;
 
