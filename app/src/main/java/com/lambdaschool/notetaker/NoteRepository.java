@@ -22,16 +22,16 @@ public class NoteRepository {
         // retrieve notes from cache
         liveDataList.setValue(getNotesFromCache());
         // retrieve notes from online DB
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                final ArrayList<Note> notes = NotesFirebaseDao.getNotes();
-//
-//                final ArrayList<Note> updatedNotes = NotesDbDao.updateCache(notes);
-//
-//                liveDataList.postValue(updatedNotes);
-//            }
-//        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final ArrayList<Note> notes = NotesFirebaseDao.getNotes();
+
+                final ArrayList<Note> updatedNotes = NotesDbDao.updateCache(notes);
+
+                liveDataList.postValue(updatedNotes);
+            }
+        }).start();
         return liveDataList;
     }
 
@@ -43,8 +43,8 @@ public class NoteRepository {
         new Thread(new Runnable() {
             @Override
             public void run() {
-//                String newId = NotesFirebaseDao.createNote(note);
-//                note.setId(newId);
+                String newId = NotesFirebaseDao.createNote(note);
+                note.setId(newId);
 
                 if (NotesDbDao.readNote(note.getId()) == null) {
                     NotesDbDao.createNote(note);
