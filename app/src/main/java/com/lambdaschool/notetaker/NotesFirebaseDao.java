@@ -13,9 +13,9 @@ public class NotesFirebaseDao {
     private static final String NOTES = "notes/";
     private static final String URL_ENDING = ".json";
 
-    private static final String USER_INFO = BASE_URL + "%d/" + URL_ENDING;
-    private static final String USER_NOTES = BASE_URL + "%d/" + NOTES + URL_ENDING;
-    private static final String USER_SPECIFIC_NOTE = BASE_URL + "%d/" + NOTES + "%s/" + URL_ENDING; //use string.format to add id
+    private static final String USER_INFO = BASE_URL + "%s/" + URL_ENDING;
+    private static final String USER_NOTES = BASE_URL + "%s/" + NOTES + URL_ENDING;
+    private static final String USER_SPECIFIC_NOTE = BASE_URL + "%s/" + NOTES + URL_ENDING; //use string.format to add id
 
     public static ArrayList<Note> getNotes() {
         ArrayList<Note> notes = new ArrayList<>();

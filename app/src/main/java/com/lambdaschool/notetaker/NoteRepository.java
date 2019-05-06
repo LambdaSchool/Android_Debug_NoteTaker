@@ -43,12 +43,28 @@ public class NoteRepository {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String newId = NotesFirebaseDao.createNote(note);
-                note.setId(newId);
-                NotesDbDao.createNote(note);
+                if (note.getId().equals(Note.NO_ID)) {
+                    String newId = NotesFirebaseDao.createNote(note);
+                    note.setId(newId);
+                    NotesDbDao.createNote(note);
+                } else {
+                    NotesFirebaseDao.updateNote(note.getId(), note);
+                    NotesDbDao.updateNote(note);
+                }
                 liveDataList.postValue(getNotesFromCache());
             }
         }).start();
 //        return SharedPrefsDao.getAllNotes();
+    }
+
+    public void updateNote(final Note note) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NotesFirebaseDao.updateNote(note.getId(), note);
+                NotesDbDao.updateNote(note);
+                liveDataList.postValue(getNotesFromCache());
+            }
+        }).start();
     }
 }

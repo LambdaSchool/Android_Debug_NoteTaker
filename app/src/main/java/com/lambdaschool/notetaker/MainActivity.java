@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
             if (requestCode == EDIT_REQUEST_CODE) {
                 if (data != null) {
                     Note returnedNote = (Note) data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
-
                     viewModel.addNote(returnedNote, context);
                 }
             }
