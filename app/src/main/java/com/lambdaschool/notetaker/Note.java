@@ -49,6 +49,7 @@ public class Note implements Serializable {
 
     public Note(int id) {
         this.id = Integer.toString(id);
+        this.timestamp = System.currentTimeMillis();
     }
 
     public Note(JSONObject jsonObject, String name) {
@@ -106,7 +107,7 @@ public class Note implements Serializable {
     public String toJsonString() {
         JSONObject json = new JSONObject();
         try {
-            json.put("title", this.title)
+            json.put("title", this.title);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -43,7 +43,7 @@ public class SharedPrefsDao {
         return note;
     }
 
-    private static int getNextId() {
+    public static int getNextId() {
         int currentId = 0;
         if (MainActivity.preferences != null) {
             currentId = MainActivity.preferences.getInt(NEXT_KEY_ID, 0);

@@ -45,7 +45,13 @@ public class NoteRepository {
             public void run() {
                 String newId = NotesFirebaseDao.createNote(note);
                 note.setId(newId);
-                NotesDbDao.createNote(note);
+
+                if (NotesDbDao.readNote(note.getId()) == null) {
+                    NotesDbDao.createNote(note);
+                } else {
+                    NotesDbDao.updateNote(note);
+                }
+
                 liveDataList.postValue(getNotesFromCache());
             }
         }).start();

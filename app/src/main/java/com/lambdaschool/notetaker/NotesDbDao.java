@@ -21,6 +21,7 @@ public class NotesDbDao {
     public static Note readNote(String id) {
         if (db != null) {
             Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s WHERE %s = '%s'",
+                                                      NotesDbContract.NotesEntry.TABLE_NAME,
                                                       NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
                                                       id),
                                         null);
@@ -106,7 +107,7 @@ public class NotesDbDao {
 
     public static void updateNote(Note note) {
         if (db != null) {
-            String whereClause = String.format("%s = '%s'",
+            String whereClause = String.format("%s == '%s'",
                                                NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
                                                note.getId());
 
