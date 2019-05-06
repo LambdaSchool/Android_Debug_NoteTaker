@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         for (Note note : notes)
             viewModel.addNote(note, context);
         }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -142,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
             if (requestCode == EDIT_REQUEST_CODE) {
                 if (data != null) {
                     Note returnedNote = (Note) data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
-
                     viewModel.addNote(returnedNote, context);
                 }
             }
