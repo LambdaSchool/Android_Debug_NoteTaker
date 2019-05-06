@@ -20,15 +20,15 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            noteTitle = itemView.findViewById(R.id.showTitle);
+            noteTitle = itemView.findViewById(R.id.note_element_title);
             noteContent = itemView.findViewById(R.id.note_element_content);
             parentView = itemView.findViewById(R.id.note_element_parent_layout);
         }
     }
 
     private ArrayList<Note> dataList;
-    private Context         context;
-    private Activity        activity;
+    private Context context;
+    private Activity activity;
 
     NoteListAdapter(ArrayList<Note> dataList, Activity activity) {
         this.dataList = dataList;
@@ -46,10 +46,10 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         context = viewGroup.getContext();
         View view = LayoutInflater.from(
                 viewGroup.getContext())
-                                  .inflate(
-                                          R.layout.note_element_layout,
-                                          viewGroup,
-                                          false);
+                .inflate(
+                        R.layout.note_element_layout,
+                        viewGroup,
+                        false);
         return new ViewHolder(view);
     }
 
