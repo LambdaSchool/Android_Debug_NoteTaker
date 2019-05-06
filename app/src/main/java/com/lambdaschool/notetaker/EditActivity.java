@@ -10,8 +10,6 @@ public class EditActivity extends AppCompatActivity {
 
     public static final String EDIT_NOTE_KEY = "edit_note";
 
-
-
     EditText editTitle, editContent;
     Note note;
 
@@ -24,9 +22,9 @@ public class EditActivity extends AppCompatActivity {
         editTitle = findViewById(R.id.edit_title);
         editContent = findViewById(R.id.edit_content);
 
-        note = (Note) getIntent().getSerializableExtra("editNote");
+        note = (Note) getIntent().getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
         if(note == null) {
-            note = new Note(Note.NO_ID);
+            note = new Note(SharedPrefsDao.getNextId());
         }
 
         editTitle.setText(note.getTitle());
