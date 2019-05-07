@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 			public void onClick(View view) {
 				Intent intent = new Intent(context, EditActivity.class);
 				Note newNote = new Note(Note.NO_ID);
+				intent.putExtra("editNote", newNote);
 				startActivityForResult(intent, EDIT_REQUEST_CODE);
 				
 			}
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 					Note returnedNote = (Note) data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
 					
 					viewModel.addNote(returnedNote, context);
+					listAdapter.notifyDataSetChanged();
 				}
 			}
 		}

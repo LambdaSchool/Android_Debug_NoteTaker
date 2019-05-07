@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class NoteViewModel extends ViewModel {
 	private MutableLiveData<ArrayList<Note>> noteList;
 	private NoteRepository repo;
-	
+	//LiveData<ArrayList<Note>> getNotesList(Context context)
 	public LiveData<ArrayList<Note>> getNotesList(Context context) {
 		if(noteList == null) {
 			loadList(context);
@@ -28,7 +28,7 @@ public class NoteViewModel extends ViewModel {
 	public void addNote(Note note, Context context) {
 		if(noteList != null) {
 			repo.addNote(note);
-//            noteList = repo.getNotes(context);
+            noteList = repo.getNotes(context);
 		}
 	}
 }

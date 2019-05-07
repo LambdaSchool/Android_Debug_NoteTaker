@@ -47,9 +47,10 @@ public class EditActivity extends AppCompatActivity {
 	}
 	
 	private void prepResult() {
+	
+		Intent resultIntent = new Intent();
 		note.setTitle(editTitle.getText().toString());
 		note.setContent(editContent.getText().toString());
-		Intent resultIntent = new Intent();
 		resultIntent.putExtra(EDIT_NOTE_KEY, note);
 		setResult(Activity.RESULT_OK, resultIntent);
 	}

@@ -87,7 +87,7 @@ public class NotesDbDao {
 			
 			long resultId = db.insert(NotesDbContract.NotesEntry.TABLE_NAME, null, values);
 
-            /*db.execSQL(String.format("INSERT INTO %s " +
+/*            db.execSQL(String.format("INSERT INTO %s " +
                                       "(%s, %s, %s, %s) " +
                                       "VALUES ('%s', '%s', '%s', %s);",
 

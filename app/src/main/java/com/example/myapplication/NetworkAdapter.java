@@ -31,11 +31,13 @@ public class NetworkAdapter {
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setReadTimeout(TIMEOUT);
 			connection.setConnectTimeout(TIMEOUT);
+			connection.setRequestMethod(requestType);
 			
 			if(requestType.equals(GET) || requestType.equals(DELETE)) {
 				connection.connect();
-			} else if(requestType.equals(POST) || requestType.equals(PUT)) {
-				OutputStream outputStream = connection.getOutputStream();
+			} else if(requestType.equals(POST) || requestType.equals(PUT) && body != null) {
+				connection.setDoInput(true);
+				final OutputStream outputStream = connection.getOutputStream();
 				outputStream.write(body.getBytes());
 				outputStream.close();
 			}

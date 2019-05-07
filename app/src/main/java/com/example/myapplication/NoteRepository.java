@@ -25,9 +25,7 @@ public class NoteRepository {
 			@Override
 			public void run() {
 				final ArrayList<Note> notes = NotesFirebaseDao.getNotes();
-				
 				final ArrayList<Note> updatedNotes = NotesDbDao.updateCache(notes);
-				
 				liveDataList.postValue(updatedNotes);
 			}
 		}).start();
