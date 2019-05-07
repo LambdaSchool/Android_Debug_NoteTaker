@@ -13,7 +13,7 @@ public class NotesFirebaseDao {
     private static final String NOTES = "notes/";
     private static final String URL_ENDING = ".json";
 
-    private static final String USER_ID = "";
+    private static final String USER_ID = "basil/";
 
     private static final String USER_INFO = BASE_URL + USER_ID + URL_ENDING;
     private static final String USER_NOTES = BASE_URL + USER_ID + NOTES + URL_ENDING;
@@ -26,12 +26,12 @@ public class NotesFirebaseDao {
         try {
             JSONObject topLevel = new JSONObject(result);
             JSONArray noteIds = topLevel.names();
-            for(int i = 0; i < noteIds.length(); ++i) {
+            for (int i = 0; i < noteIds.length(); ++i) {
                 final String name = noteIds.getString(i);
                 notes.add(new Note(
                         topLevel.getJSONObject(name),
                         name)
-                         );
+                );
             }
         } catch (JSONException e) {
             e.printStackTrace();

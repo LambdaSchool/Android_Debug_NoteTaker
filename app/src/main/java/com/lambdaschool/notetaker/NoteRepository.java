@@ -3,14 +3,11 @@ package com.lambdaschool.notetaker;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class NoteRepository {
-//    private ArrayList<Note> notes;
-        MutableLiveData<ArrayList<Note>> liveDataList;
+    //    private ArrayList<Note> notes;
+    MutableLiveData<ArrayList<Note>> liveDataList;
 
     /*public NoteRepository() {
         this.notes = new ArrayList<>();
@@ -46,6 +43,18 @@ public class NoteRepository {
                 String newId = NotesFirebaseDao.createNote(note);
                 note.setId(newId);
                 NotesDbDao.createNote(note);
+                liveDataList.postValue(getNotesFromCache());
+            }
+        }).start();
+//        return SharedPrefsDao.getAllNotes();
+    }
+
+    public void editNote(final Note note) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NotesFirebaseDao.updateNote(note.getId(), note);
+                NotesDbDao.updateNote(note);
                 liveDataList.postValue(getNotesFromCache());
             }
         }).start();

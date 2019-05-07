@@ -6,23 +6,18 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int LAYOUT_SPAN_COUNT = 2;
+    public static final int LAYOUT_SPAN_COUNT = 1;
     public static SharedPreferences preferences;
 
     private Context context;
@@ -35,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView listView;
     private NoteListAdapter listAdapter;
 
+    public static final int ADD_REQUEST_CODE = 2;
     public static final int EDIT_REQUEST_CODE = 1;
 
     @Override
@@ -83,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(context, EditActivity.class);
                 Note newNote = new Note(Note.NO_ID);
-                startActivityForResult(intent, EDIT_REQUEST_CODE);
+                intent.putExtra(EditActivity.EDIT_NOTE_KEY, newNote);
+                startActivityForResult(intent, ADD_REQUEST_CODE);
 
             }
         });
@@ -138,11 +135,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == EDIT_REQUEST_CODE) {
-                if (data != null) {
+            if (data != null) {
+                if (requestCode == ADD_REQUEST_CODE) {
+
                     Note returnedNote = (Note) data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
 
                     viewModel.addNote(returnedNote, context);
+
+
+                } else if (requestCode == EDIT_REQUEST_CODE) {
+                    Note returnedNote = (Note) data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY);
+                    viewModel.editNote(returnedNote, context);
                 }
             }
         }

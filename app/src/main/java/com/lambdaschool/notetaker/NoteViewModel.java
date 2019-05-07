@@ -12,7 +12,7 @@ public class NoteViewModel extends ViewModel {
     private NoteRepository repo;
 
     public LiveData<ArrayList<Note>> getNotesList(Context context) {
-        if(noteList == null) {
+        if (noteList == null) {
             loadList(context);
         }
         return noteList;
@@ -24,8 +24,15 @@ public class NoteViewModel extends ViewModel {
     }
 
     public void addNote(Note note, Context context) {
-        if(noteList != null) {
+        if (noteList != null) {
             repo.addNote(note);
+//            noteList = repo.getNotes(context);
+        }
+    }
+
+    public void editNote(Note note, Context context) {
+        if (noteList != null) {
+            repo.editNote(note);
 //            noteList = repo.getNotes(context);
         }
     }

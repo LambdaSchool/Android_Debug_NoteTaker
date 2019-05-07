@@ -2,14 +2,13 @@ package com.lambdaschool.notetaker;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 public class EditActivity extends AppCompatActivity {
 
     public static final String EDIT_NOTE_KEY = "edit_note";
-
 
 
     EditText editTitle, editContent;
@@ -25,7 +24,7 @@ public class EditActivity extends AppCompatActivity {
         editContent = findViewById(R.id.edit_content);
 
         note = (Note) getIntent().getSerializableExtra(EDIT_NOTE_KEY);
-        if(note == null) {
+        if (note == null) {
             note = new Note(Note.NO_ID);
         }
 

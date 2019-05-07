@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import java.util.ArrayList;
 
 public class SharedPrefsDao {
-    private static final String KEY_IDS       = "key_ids";
+    private static final String KEY_IDS = "key_ids";
     private static final String KEY_ID_PREFIX = "key_id_";
-    private static final String NEXT_KEY_ID   = "key_next_id";
+    private static final String NEXT_KEY_ID = "key_next_id";
 
     private static String getIdsString() {
         String keyIds = "";
@@ -26,8 +26,8 @@ public class SharedPrefsDao {
     public static ArrayList<Note> getAllNotes() {
         String[] ids = getAllIds();
         ArrayList<Note> notes = new ArrayList<>(ids.length);
-        for(String id: ids) {
-            if(!id.equals("")) {
+        for (String id : ids) {
+            if (!id.equals("")) {
                 notes.add(getNote(id));
             }
         }
@@ -47,7 +47,7 @@ public class SharedPrefsDao {
         int currentId = 0;
         if (MainActivity.preferences != null) {
             currentId = MainActivity.preferences.getInt(NEXT_KEY_ID, 0);
-            int                      nextId = currentId + 1;
+            int nextId = currentId + 1;
             SharedPreferences.Editor editor = MainActivity.preferences.edit();
             editor.putInt(NEXT_KEY_ID, nextId);
             editor.apply();
@@ -59,10 +59,10 @@ public class SharedPrefsDao {
         if (note.getId().equals(Note.NO_ID)) {
             note.setId(getNextId());
         }
-        String[] ids    = getAllIds();
-        boolean  exists = false;
+        String[] ids = getAllIds();
+        boolean exists = false;
         for (String id : ids) {
-            if(!id.equals("")) {
+            if (!id.equals("")) {
                 if (note.getId().equals(id)) {
                     exists = true;
                     break;

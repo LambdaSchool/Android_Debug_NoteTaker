@@ -12,12 +12,12 @@ public class NotesDbContract {
         public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
 
         public static final String SQL_CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
-                                                      " ( " +
-                                                      _ID + " TEXT PRIMARY KEY, " +
-                                                      COLUMN_NAME_FB_ID + " TEXT, " +
-                                                      COLUMN_NAME_CONTENT + " TEXT, " +
-                                                      COLUMN_NAME_TITLE + " TEXT, " +
-                                                      COLUMN_NAME_TIMESTAMP + " INTEGER);";
+                " ( " +
+                _ID + " TEXT PRIMARY KEY, " +
+                COLUMN_NAME_FB_ID + " TEXT, " +
+                COLUMN_NAME_CONTENT + " TEXT, " +
+                COLUMN_NAME_TITLE + " TEXT, " +
+                COLUMN_NAME_TIMESTAMP + " INTEGER);";
 
         public static final String SQL_DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
     }

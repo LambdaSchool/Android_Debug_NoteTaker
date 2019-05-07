@@ -21,9 +21,9 @@ public class NotesDbDao {
     public static Note readNote(String id) {
         if (db != null) {
             Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s WHERE %s = '%s'",
-                                                      NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
-                                                      id),
-                                        null);
+                    NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
+                    id),
+                    null);
             Note note;
             if (cursor.moveToNext()) {
                 note = getNoteFromCursor(cursor);
@@ -40,7 +40,7 @@ public class NotesDbDao {
 
     @NonNull
     private static Note getNoteFromCursor(Cursor cursor) {
-        int  index;
+        int index;
         Note note;
         index = cursor.getColumnIndexOrThrow(NotesDbContract.NotesEntry.COLUMN_NAME_TITLE);
         String title = cursor.getString(index);
@@ -61,8 +61,8 @@ public class NotesDbDao {
     public static ArrayList<Note> readAllNotes() {
         if (db != null) {
             Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s;",
-                                                      NotesDbContract.NotesEntry.TABLE_NAME),
-                                        null);
+                    NotesDbContract.NotesEntry.TABLE_NAME),
+                    null);
 
             ArrayList<Note> notesList = new ArrayList<>();
             while (cursor.moveToNext()) {
@@ -107,15 +107,15 @@ public class NotesDbDao {
     public static void updateNote(Note note) {
         if (db != null) {
             String whereClause = String.format("%s = '%s'",
-                                               NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
-                                               note.getId());
+                    NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
+                    note.getId());
 
             final Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s WHERE %s",
-                                                            NotesDbContract.NotesEntry.TABLE_NAME,
-                                                            whereClause),
-                                              null);
+                    NotesDbContract.NotesEntry.TABLE_NAME,
+                    whereClause),
+                    null);
 
-            if(cursor.getCount() == 1) {
+            if (cursor.getCount() == 1) {
                 ContentValues values = new ContentValues();
                 values.put(NotesDbContract.NotesEntry.COLUMN_NAME_CONTENT, note.getContent());
                 values.put(NotesDbContract.NotesEntry.COLUMN_NAME_TIMESTAMP, note.getTimestamp());
@@ -129,10 +129,10 @@ public class NotesDbDao {
     public static void deleteNote(Note note) {
         if (db != null) {
             String whereClause = String.format("%s = '%s'",
-                                               NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
-                                               note.getId());
+                    NotesDbContract.NotesEntry.COLUMN_NAME_FB_ID,
+                    note.getId());
 
-            int affectedRows = db .delete(NotesDbContract.NotesEntry.TABLE_NAME, whereClause, null);
+            int affectedRows = db.delete(NotesDbContract.NotesEntry.TABLE_NAME, whereClause, null);
         }
     }
 
@@ -142,12 +142,12 @@ public class NotesDbDao {
         final ArrayList<Note> cacheNotes = readAllNotes();
 
         // check each note
-        for(Note fbNote: fbNotes) {
+        for (Note fbNote : fbNotes) {
             boolean noteFound = false;
-            for(Note cacheNote: cacheNotes) {
-                if(fbNote.getId().equals(cacheNote.getId())) {
+            for (Note cacheNote : cacheNotes) {
+                if (fbNote.getId().equals(cacheNote.getId())) {
                     // if note does exist, check for timestamp
-                    if(fbNote.getTimestamp() > cacheNote.getTimestamp()) {
+                    if (fbNote.getTimestamp() > cacheNote.getTimestamp()) {
                         // if fb is newer update cache
                         updateNote(fbNote);
                     } else {
@@ -156,7 +156,7 @@ public class NotesDbDao {
                     noteFound = true;
                 }
             }
-            if(!noteFound) {
+            if (!noteFound) {
                 // if note doesn't exist in cache, add it
                 createNote(fbNote);
             }

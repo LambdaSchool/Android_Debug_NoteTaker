@@ -29,22 +29,23 @@ public class NetworkAdapter {
             connection = (HttpURLConnection) url.openConnection();
             connection.setReadTimeout(TIMEOUT);
             connection.setConnectTimeout(TIMEOUT);
+            connection.setRequestMethod(requestType);
 
-            if(requestType.equals(GET) || requestType.equals(DELETE)) {
+            if (requestType.equals(GET) || requestType.equals(DELETE)) {
                 connection.connect();
-            } else if(requestType.equals(POST) || requestType.equals(PUT)) {
+            } else if (requestType.equals(POST) || requestType.equals(PUT)) {
                 OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(body.getBytes());
                 outputStream.close();
             }
 
-            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 stream = connection.getInputStream();
-                if(stream != null) {
+                if (stream != null) {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
                     StringBuilder builder = new StringBuilder();
                     String line;
-                    while((line = reader.readLine()) != null) {
+                    while ((line = reader.readLine()) != null) {
                         builder.append(line);
                     }
                     result = builder.toString();
@@ -58,11 +59,11 @@ public class NetworkAdapter {
             e.printStackTrace();
             result = e.getMessage();
         } finally {
-            if(connection != null) {
+            if (connection != null) {
                 connection.disconnect();
             }
 
-            if(stream != null) {
+            if (stream != null) {
                 try {
                     stream.close();
                 } catch (IOException e) {
