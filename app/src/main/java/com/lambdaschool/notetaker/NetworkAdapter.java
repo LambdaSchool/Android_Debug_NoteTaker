@@ -20,6 +20,7 @@ public class NetworkAdapter {
         return httpRequest(stringUrl, requestType, "");
     }
 
+
     public static String httpRequest(String stringUrl, String requestType, String body) {
         String result = "";
         InputStream stream = null;
@@ -29,7 +30,7 @@ public class NetworkAdapter {
             connection = (HttpURLConnection) url.openConnection();
             connection.setReadTimeout(TIMEOUT);
             connection.setConnectTimeout(TIMEOUT);
-
+            connection.setRequestMethod(requestType);// was missing
             if(requestType.equals(GET) || requestType.equals(DELETE)) {
                 connection.connect();
             } else if(requestType.equals(POST) || requestType.equals(PUT)) {
